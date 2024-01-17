@@ -2,6 +2,7 @@
 ;accumulator and store the result in reg C. Again swap the acc content and reg B content and subtract the reg B
 ;content from acc content. See the flag content and the reg content before and after the subtraction
 
+
 LDA 8071H
 MOV B,A
 LDA 8072H
