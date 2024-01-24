@@ -20,7 +20,7 @@
 
  DCR C 
  JNC MIN
- 
+
  DCR H 
  JNC HOUR
  HLT 
