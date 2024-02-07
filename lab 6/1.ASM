@@ -1,12 +1,12 @@
  ; Write a program to make a clock. Use port A, B and C to display second, minute and hour respectively. The clock
  ; should be 24 hours basis.
 
- MVI B,24H
+ MVI B, 00H ; hour 
 
  HOUR: NOP
- MVI C, 60H
+ MVI C, 00H ; min
  MIN: NOP
- MVI D, 60H
+ MVI D, 00H  ; sec
 
  SEC: NOP
  MOV A,D
@@ -15,12 +15,18 @@
  OUT 41H
  MOV A,B 
  OUT 42H
- DCR D 
- JNC SEC
+ INR D 
+ MOV A, D 
+ CPI 03CH
+ JNZ SEC
 
- DCR C 
- JNC MIN
+ INR C
+ MOV A, C
+ CPI 03CH 
+ JNZ MIN
 
- DCR H 
- JNC HOUR
+ INR H 
+ MOV A, H
+ CPI 18H 
+ JNZ HOUR
  HLT 
