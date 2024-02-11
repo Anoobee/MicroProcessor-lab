@@ -19,9 +19,9 @@ STAX B
 INR H 
 INR D 
 INR E 
-MVI A, 59H
-CMP H 
-JNC LOOP    
+MOV A, H
+SBI 59
+JNZ LOOP    
 HLT 
 
 
