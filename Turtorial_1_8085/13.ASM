@@ -1,0 +1,43 @@
+; Add ten 16-bit numbers stored in a table at 9500H and store the 24-bit result at the end of the
+; table.
+
+LXI B, 9500H
+LXI D, 0000H
+MVI A,00H 
+STA 9516H ; SETTNG THE MSB AS 0(HIGHER BYTE)
+
+PUSH PSW 
+LOOP: NOP
+POP PSW ; RESTORING THE FLAG
+LDAX B
+MOV L,A 
+INX B
+LDAX B
+MOV H,A 
+XCHG 
+DAD D 
+XCHG
+JNC SKIP
+LDA 9516H
+ADI 01H 
+STA 9516H 
+
+SKIP: NOP
+PUSH PSW 
+
+INX B
+MOV A, C 
+CPI 14H
+JNZ LOOP
+MOV A,E 
+STAX B
+INX B 
+MOV A, D
+STAX B 
+
+
+HLT
+
+
+
+
