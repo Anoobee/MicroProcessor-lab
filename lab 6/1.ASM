@@ -26,7 +26,7 @@
  JNZ MIN
 
  INR H 
- MOV A, H
+ MOV A, H 
  CPI 18H 
- JNZ HOUR
+ JNZ HOUR 
  HLT 
