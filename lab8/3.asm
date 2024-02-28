@@ -1,15 +1,14 @@
 ; Write a program to read string from the user (use function that reads string) and display the string in another line. (To
 ; display the character in new line display characters 0DH and 0AH)
 
-; input dida $ end ma hanlu parxa
+
 
 
     .model small
     .stack 32
     .data
-maxchr db 20 
-       db ?
-str db 20 dup(' ') ; 20 is the maxlenth of character to read
+
+str db,20,?, 20 dup(' ') ; 20 is the maxlenth of character to read
 
     .code
 main proc far
@@ -27,11 +26,11 @@ main proc far
     mov dl, 0ah ; line feed 
     int 21h
     
-    mov bl, maxchr
+    mov bl, str[1] ; second element consists of lenght of entered char
     mov bh, 00
     mov str[bx], '$'
 
-    mov dx, offset str+2                                                                                                                ; give pointer of str to dx
+    mov dx, offset str                                                                                                                ; give pointer of str to dx
     mov ah, 09h
     int 21h
 
